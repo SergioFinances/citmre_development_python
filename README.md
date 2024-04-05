@@ -16,7 +16,7 @@ pip install citmre=0.1.0
 ## Example
 
 ```bash
-from citmre import rmre_data
+from citmre.citmre_fun import rmre_data
 
 # Show full series dataset
 rmre_serie = citmre.rmre_data()
