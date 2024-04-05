@@ -57,6 +57,8 @@ def rmre_data(start_date=None, end_date=None, log_return=False, plot_data=False,
         if plot_data:
             fig = px.line(df_filtered, x='Date', y='log_return' if log_return else 'rmre',
                           title='Log Return' if log_return else 'RMRE')
+            
+            fig.update_layout(autosize=True)
             fig.show()
         return df_filtered.set_index('Date')['log_return' if log_return else 'rmre']
 
@@ -84,6 +86,7 @@ def rmre_data(start_date=None, end_date=None, log_return=False, plot_data=False,
                           x='Month' if frequency == 12 else 'Quarter' if frequency == 4 else 'Semester',
                           y=y_column,
                           title='Mean Log Return' if type == 'mean' else 'Last Log Return')
+            fig.update_layout(autosize=True)
             fig.show()
 
         return result
