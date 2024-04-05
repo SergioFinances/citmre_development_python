@@ -1,6 +1,6 @@
 import logging
 
-from citmre import rmre_data
+from citmre.citmre_fun import rmre_data
 
 logging.basicConfig(level=logging.INFO)
 
