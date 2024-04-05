@@ -1,11 +1,11 @@
-[<img src="man/figures/logo.png" width="100">](https://github.com/SergioFinances/citmre_development_python.git)
-
 # citmre
 
 The Colombian Index Tool (Market Rate Exchange) package downloads the 
 Colombian Market Rate from the source:
 <https://www.datos.gov.co/Econom-a-y-Finanzas/TRM/ceyp-9c7c/data>, for
 direct use in Python.
+
+[<img src="man/figures/logo.png" width="100">](https://github.com/SergioFinances/citmre_development_python.git)
 
 ## Installation
 
