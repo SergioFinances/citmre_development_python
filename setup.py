@@ -9,11 +9,11 @@ DESCRIPTION = 'The Colombian Index Tool (Market Rate Exchange) package downloads
 PACKAGE_NAME = 'citmre'
 AUTHOR = ['Sergio Andrés Sierra Luján', 'David Esteban Rodríguez Guevara']
 EMAIL = ['sergiochess95@gmail.com', 'davestss@hotmail.com']
-GITHUB_URL = 'https://github.com/SergioFinances/citmre'
+GITHUB_URL = 'https://github.com/SergioFinances/citmre_development_python.git'
 
 setup(
     name = 'citmre',
-    packages = ['cITMre_Package'],
+    packages = ['citmre'],
     version = '0.1.0',
     license='MIT',
     description = DESCRIPTION,
