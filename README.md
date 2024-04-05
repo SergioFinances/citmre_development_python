@@ -1,3 +1,5 @@
+[<img src="man/figures/logo.png" width="100">](https://github.com/SergioFinances/citmre_development_python.git)
+
 # citmre
 
 The Colombian Index Tool (Market Rate Exchange) package downloads the 
@@ -8,7 +10,7 @@ direct use in Python.
 ## Installation
 
 You can install the development version of citmre from:
-[GitHub](https://github.com/SergioFinances/citmre)
+[GitHub](https://github.com/SergioFinances/citmre_development_python.git)
 
 ```bash
 pip install citmre=0.1.0
