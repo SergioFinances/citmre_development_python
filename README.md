@@ -34,8 +34,7 @@ rmre_splited = rmre_data('2000-01-01','2023-12-31', log_return=True)
 
 #> "Warning: The information will be obtained from the next business day, as the desired date is a holiday or weekend."
 ```
-
-![](man/figures/README-example-2.png)
+<img src="man/figures/README-example-2.png" alt="Example Image" style="width: 1000px; height: 360px;">
 
 ## Referencias
 
