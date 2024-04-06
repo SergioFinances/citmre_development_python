@@ -21,21 +21,21 @@ pip install citmre=0.1.0
 from citmre.citmre_fun import rmre_data
 
 # Show full series dataset
-rmre_serie = citmre.rmre_data()
+rmre_serie = rmre_data()
 
 # Show monthly dataset with Plotly Graph
-rmre_splited = citmre.rmre_data(frequency=12, log_return=False, plot_data=True)
+rmre_splited = rmre_data(frequency=12, log_return=False, plot_data=True)
 
 # Show quaterly log_return dataset with Plotly Graph
-rmre_splited = citmre.rmre_data(frequency=4, log_return=True, plot_data=True, type="mean")
+rmre_splited = rmre_data(frequency=4, log_return=True, plot_data=True, type="mean")
 
 # Show splited log return dataset
-rmre_splited = citmre.rmre_data('2000-01-01','2023-12-31', log_return=True)
+rmre_splited = rmre_data('2000-01-01','2023-12-31', log_return=True)
 
 #> "Warning: The information will be obtained from the next business day, as the desired date is a holiday or weekend."
 ```
 
-![](man/figures/README-example-1.png)
+![](man/figures/README-example-2.png)
 
 ## Referencias
 
