@@ -12,6 +12,8 @@ direct use in Python.
 You can install the development version of citmre from:
 [GitHub](https://github.com/SergioFinances/citmre_development_python.git)
 
+## Example
+
 ```bash
 pip install citmre=0.1.0
 from citmre.citmre_fun import rmre_data
