@@ -10,6 +10,9 @@ PACKAGE_NAME = 'cITMre'
 AUTHOR = ['Sergio Andrés Sierra Luján', 'David Esteban Rodríguez Guevara']
 EMAIL = ['sergiochess95@gmail.com', 'davestss@hotmail.com']
 GITHUB_URL = 'https://github.com/SergioFinances/citmre_development_python.git'
+MAINTAINERS = [
+    {'name': 'David Esteban Rodríguez Guevara', 'email': 'davestss@hotmail.com'}
+]
 
 setup(
     name = 'cITMre',
@@ -38,4 +41,6 @@ setup(
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python :: 3',
     ],
+    maintainers=MAINTAINERS,
+    readme={'file': 'README.md', 'content_type': 'text/markdown'}
 )
