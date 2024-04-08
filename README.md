@@ -15,7 +15,7 @@ You can install the development version of citmre from:
 ## Example
 
 ```bash
-pip install citmre=0.1.0
+pip install cITMre=0.1.0
 from citmre.citmre_fun import rmre_data
 
 # Show full series dataset
