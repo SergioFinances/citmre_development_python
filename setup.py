@@ -41,6 +41,5 @@ setup(
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python :: 3',
     ],
-    maintainers=MAINTAINERS,
-    readme={'file': 'README.md', 'content_type': 'text/markdown'}
+    maintainers=MAINTAINERS
 )
