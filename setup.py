@@ -6,13 +6,13 @@ long_description = (this_directory / "README.md").read_text()
 
 VERSION = '0.1.0'
 DESCRIPTION = 'The Colombian Index Tool (Market Rate Exchange) package downloads the Colombian Market Rate from the source: Portal de Datos Abiertos <www.datos.gov.co>, for direct use in Python.'
-PACKAGE_NAME = 'citmre'
+PACKAGE_NAME = 'cITMre'
 AUTHOR = ['Sergio Andrés Sierra Luján', 'David Esteban Rodríguez Guevara']
 EMAIL = ['sergiochess95@gmail.com', 'davestss@hotmail.com']
 GITHUB_URL = 'https://github.com/SergioFinances/citmre_development_python.git'
 
 setup(
-    name = 'citmre',
+    name = 'cITMre',
     packages = ['citmre'],
     version = '0.1.0',
     license='MIT',
