@@ -33,6 +33,6 @@ rmre_splited = rmre_data('2000-01-01','2023-12-31', log_return=True)
 ```
 <img src="man/figures/README-example-2.png" alt="Example Image" style="width: 1000px; height: 360px;">
 
-## Referencias
+## References
 
 Source: Portal de Datos Abiertos \<www.datos.gov.co\>
