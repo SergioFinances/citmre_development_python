@@ -10,21 +10,72 @@ import plotly.express as px
 def rmre_data(start_date=None, end_date=None, log_return=False, plot_data=False, frequency=365, type="last_date"):
 
     """
-    Get data from the Colombian market rate index.
+    The cITMre library—Colombian Index Tool (Market Rate Exchange)—responds to the researcher's economics and financial sciences needs to use the colombian Representative Market Rate Exchange. This package presents a practical solution for downloading the RMRE database. 
 
-    Parameters:
-        start_date (str, optional): Start date to retrieve the data (format 'YYYY-MM-DD').
-        end_date (str, optional): End date to retrieve the data (format 'YYYY-MM-DD').
-        log_return (bool, optional): Flag to calculate the logarithmic return of the data.
-        plot_data (bool, optional): Flag to display the data in a plot.
-        frequency (int, optional): Frequency for the logarithmic return (days). Options are 365, 12, 4, or 2.
-        type (str, optional): Type of data to retrieve. Options are 'last_date' for the last date or 'mean' for the average.
+    The tool allows us to obtain:
 
-    Returns:
-        DataFrame: DataFrame with the retrieved data.
+    * Download the data series in daily, monthly, quarterly, and half-yearly frequencies.
+    * Can split the time series through start and end function
+    * Can transform the data set in log returns or level
+    * Can make a Dynamic graph through Plotly, or if is your preference can make a normal plot.
 
-    Raises:
-        ValueError: If the dates are not in the correct format or if an invalid argument is provided.
+    # Motivation
+
+    Obtaining information from the Colombian RMRE is relatively straightforward; the search in the official state database Portal de Datos Abiertos <www.datos.gov.co> allows the data to be downloaded in .xls or .csv. In economics or financial sciences, obtaining and loading this information into R can be frustrating, forcing many users to create a routine function linked to the database limited to the user's expertise. Thus, this tool aims to facilitate both the loading of data and the use of essential RMRE time series analysis tools.
+
+    Note: The information discounts weekends and holidays; the function approximates the nearest trade date.
+
+    # Applied Example
+
+    If you want to use `citmre`, perform the package installation process using `pip install cITMre=0.1.0` and load the `from citmre.citmre_fun import rmre_data`.
+    Once the package is installed, use the `rmre_data()` function to obtain the total RMRE series (the Colombian state has RMRE data since 1991-12-02); the data loaded is an XTS series.
+
+    from citmre.citmre_fun import rmre_data
+    import pandas as pd
+    pd.head(rmre_data())
+
+    In economic or financial research, it is not necessary to take the whole time series; use `start_date` and `end_date` under the format "YYYYY-MM_DD" to obtain a specific start and end date. For example, we want to get the RMRE from March 18, 2005, to June 26, 2019, in an object called `data` simplifying function result.
+
+    data = rmre_data(start_date = "2005-03-18", end_date = "2019-06-26")
+    pd.head(data)
+
+    In some research, the historical volatility is expected to be analysed for advanced econometric or financial studies. It is possible to use the function `log_return=TRUE` to change the series to log return based on the formula: lr(RMRE) = ln(Present Value / Past Value), in Default the series is presented in level data.
+
+    data_log = rmre_data(start_date = "2005-03-18", end_date = "2019-06-26", log_return = true)
+    pd.head(data_log)
+    pd.tail(data_log)
+
+    On some occasions, economic or financial variables do not necessarily use the same time-frequency of the daily series as in the RMRE. Colombia's GDP (Gross Domestic Product) is quarterly; therefore, the RMRE daily series must be transformed into a quarterly one. The `frequency` function displays the RMRE series in monthly (12), quarterly (4) and half-yearly (2) series. By default, the daily series will be (365). Frequencies can also be transformed to log_return.
+
+    The `type` function can approximate the series on mean or last date data. When `type = "mean" is used, the series gets the average value of the series in frequency. If `type = "last_date" is used, the last data of the series is used in frequency. By default, the `type` is set to `last_date`.
+
+    ##Monthly RMRE
+    data_m = rmre_data(start_date = "1998-03-18", end_date = "2019-06-26",frequency = 12)
+    pd.head(data_m)
+    pd.tail(data_m)
+
+    ##Quarterly RMRE
+    data_q = rmre_data(start_date = "1998-03-18", end_date = "2019-06-26",frequency = 4)
+    pd.head(data_q)
+    pd.tail(data_q)
+
+    ##Half-year RMRE
+    data_s = rmre_data(start_date = "1998-03-18", end_date = "2019-06-26",frequency = 2, type = "mean")
+    pd.head(data_s)
+    pd.tail(data_s)
+
+    Finally, some researchers feel that displaying a dynamic graph increases the analysis and learning methods, which is why the `plot_data` option can display a Plotly line graph, allowing the user to analyse the data through the Viewer (See https://plotly.com/r/line-charts/>). This option works well with the other options of the `rmre_data` function.
+
+    ##Monthly RMRE
+    rmre_data(start_date = "1998-03-18", end_date = "2019-06-26",frequency = 12, plot_data = true)
+
+    # Final considerations
+
+    This tool can be used for time series analysis with an xts class condition; therefore, the user can transform the series to ts if any tool conflicts with an xts series.
+
+    # References
+    Source: Portal de Datos Abiertos <www.datos.gov.co>   
+
     """
 
     def calculate_semester(date):
