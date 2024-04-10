@@ -105,7 +105,7 @@ def rmre_data(start_date=None, end_date=None, log_return=False, plot_data=False,
 
     Finally, some researchers feel that displaying a dynamic graph increases the analysis and learning
     methods, which is why the `plot_data` option can display a Plotly line graph, allowing the user to
-    analyse the data through the Viewer (See https://plotly.com/r/line-charts/>). This option works well
+    analyse the data through the Viewer. This option works well
     with the other options of the `rmre_data` function.
 
     ##Monthly RMRE
