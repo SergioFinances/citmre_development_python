@@ -30,14 +30,13 @@ setup(
         'requests',
         'pandas',
         'numpy',
-        'plotly',
-        'datetime'
+        'plotly'
     ],
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Education',
         'Intended Audience :: Science/Research',
-        'Topic :: Scientific/Engineering :: Mathematics',
+        'Topic :: Utilities',
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python :: 3',
     ],
