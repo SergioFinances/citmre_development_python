@@ -9,6 +9,24 @@ import plotly.express as px
 
 def rmre_data(start_date=None, end_date=None, log_return=False, plot_data=False, frequency=365, type="last_date"):
 
+    """
+    Get data from the Colombian market rate index.
+
+    Parameters:
+        start_date (str, optional): Start date to retrieve the data (format 'YYYY-MM-DD').
+        end_date (str, optional): End date to retrieve the data (format 'YYYY-MM-DD').
+        log_return (bool, optional): Flag to calculate the logarithmic return of the data.
+        plot_data (bool, optional): Flag to display the data in a plot.
+        frequency (int, optional): Frequency for the logarithmic return (days). Options are 365, 12, 4, or 2.
+        type (str, optional): Type of data to retrieve. Options are 'last_date' for the last date or 'mean' for the average.
+
+    Returns:
+        DataFrame: DataFrame with the retrieved data.
+
+    Raises:
+        ValueError: If the dates are not in the correct format or if an invalid argument is provided.
+    """
+
     def calculate_semester(date):
         if date.month <= 6:
             return f"{date.year}-1S"
