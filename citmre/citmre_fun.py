@@ -25,6 +25,15 @@ def rmre_data(start_date=None, end_date=None, log_return=False, plot_data=False,
 
     Note: The information discounts weekends and holidays; the function approximates the nearest trade date.
 
+    # Parameters:
+
+    * start_date An initial date in the "YYYY-MM-DD" type; by default, the series starts on the first date of the resource
+    * end_date A final date in the "YYYY-MM-DD" form; by default, it shows the updated last date on the resource.
+    * log_return Show the log return of the RMRE (Representative Market Rate Exchange) dataset; if it is TRUE, show the log return dataset; if it is FALSE, show the level dataset; in default, show the level dataset
+    * plot_data Show a Plotly linear graph data set; by default, the argument is false, and the graph is built in the Viewer option. You can use the basic plot if the user does not use the plot_data option.
+    * frequency Show frequencies for the data set in daily (365), month (12), quarter (4), and half-year (2); in default, the dataset is the daily frequency.
+    * type It works only with 12,4,2 frequencies, showing the dataset using the last date ("last_date") or doing a mean ("mean") in the frequency series. By default, the type is "last_date".
+
     # Applied Example
 
     If you want to use `citmre`, perform the package installation process using `pip install cITMre=0.1.0` and load the `from citmre.citmre_fun import rmre_data`.
