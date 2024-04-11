@@ -30,7 +30,9 @@ setup(
         'requests',
         'pandas',
         'numpy',
-        'plotly'
+        'plotly',
+        'lxml',
+        'bs4'    
     ],
     classifiers=[
         'Development Status :: 5 - Production/Stable',
