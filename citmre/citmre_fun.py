@@ -4,8 +4,10 @@ import requests
 import json
 import numpy as np
 import re
-from datetime import datetime
 import plotly.express as px
+from requests.exceptions import RequestException
+from pandas import DataFrame, read_html
+from datetime import datetime
 
 def rmre_data(start_date=None, end_date=None, log_return=False, plot_data=False, frequency=365, type="last_date"):
 
@@ -127,12 +129,27 @@ def rmre_data(start_date=None, end_date=None, log_return=False, plot_data=False,
         else:
             return f"{date.year}-2S"
 
+    val_dat = 0
+
     url = "https://www.datos.gov.co/resource/ceyp-9c7c.json?$limit=1000000"
-    response = requests.get(url)
-    json_data = response.json()
-    df_data = pd.DataFrame(json_data)
-    df_data['vigenciadesde'] = pd.to_datetime(df_data['vigenciadesde'], format='%Y-%m-%dT%H:%M:%S.%f')
-    df_data['vigenciahasta'] = pd.to_datetime(df_data['vigenciahasta'], format='%Y-%m-%dT%H:%M:%S.%f')
+    try:
+        response = requests.get(url)
+    except RequestException as e:
+        val_dat = 1
+
+    if val_dat == 0:
+        json_data = response.text
+        df_data = DataFrame.from_records(json_data)
+        df_data['vigenciadesde'] = df_data['vigenciadesde'].apply(lambda x: datetime.strptime(x, "%Y-%m-%dT%H:%M:%OS"))
+        df_data['vigenciahasta'] = df_data['vigenciahasta'].apply(lambda x: datetime.strptime(x, "%Y-%m-%dT%H:%M:%OS"))
+    else:
+        url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQdWRVkiRnMafOBPyTo55Y7kGfogywsTagcs2uiOqSeeCWrplBcAtUezRwhRhxOeeIiszB7VE8Yu7FZ/pubhtml?gid=478587454&single=true"
+        html = read_html(url)
+        tabla = html[0]
+        df_data = DataFrame(tabla[1:], columns=tabla.iloc[0])
+        df_data = df_data.apply(lambda x: pd.to_numeric(x, errors='ignore'))
+        df_data['vigenciadesde'] = df_data['vigenciadesde'].apply(lambda x: datetime.strptime(x, "%Y-%m-%dT%H:%M:%OS"))
+        df_data['vigenciahasta'] = df_data['vigenciahasta'].apply(lambda x: datetime.strptime(x, "%Y-%m-%dT%H:%M:%OS"))
 
     if start_date is None:
         start_date = df_data['vigenciadesde'].min().strftime('%Y-%m-%d')
