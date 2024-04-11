@@ -153,7 +153,7 @@ def rmre_data(start_date=None, end_date=None, log_return=False, plot_data=False,
         df_data['vigenciahasta'] = df_data['vigenciahasta'].apply(lambda x: datetime.strptime(x, "%Y-%m-%dT%H:%M:%OS"))
 
     if start_date is None:
-        start_date = df_data['vigenciadesde'].min().strftime('%Y-%m-%d')
+        start_date = df_data['vigenciahasta'].min().strftime('%Y-%m-%d')
     if end_date is None:
         end_date = df_data['vigenciahasta'].max().strftime('%Y-%m-%d')
 
