@@ -132,6 +132,7 @@ def rmre_data(start_date=None, end_date=None, log_return=False, plot_data=False,
     val_dat = 0
 
     url = "https://www.datos.gov.co/resource/ceyp-9c7c.json?$limit=1000000"
+
     try:
         response = requests.get(url)
     except RequestException as e:
