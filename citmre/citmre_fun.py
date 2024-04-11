@@ -141,16 +141,16 @@ def rmre_data(start_date=None, end_date=None, log_return=False, plot_data=False,
     if val_dat == 0:
         json_data = response.text
         df_data = DataFrame.from_records(json_data)
-        df_data['vigenciadesde'] = df_data['vigenciadesde'].apply(lambda x: datetime.strptime(x, "%Y-%m-%dT%H:%M:%OS"))
-        df_data['vigenciahasta'] = df_data['vigenciahasta'].apply(lambda x: datetime.strptime(x, "%Y-%m-%dT%H:%M:%OS"))
+        df_data['vigenciadesde'] = pd.to_datetime(df_data['vigenciadesde'], format='%Y-%m-%dT%H:%M:%S.%f')
+        df_data['vigenciahasta'] = pd.to_datetime(df_data['vigenciahasta'], format='%Y-%m-%dT%H:%M:%S.%f')
     else:
         url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQdWRVkiRnMafOBPyTo55Y7kGfogywsTagcs2uiOqSeeCWrplBcAtUezRwhRhxOeeIiszB7VE8Yu7FZ/pubhtml?gid=478587454&single=true"
         html = read_html(url)
         tabla = html[0]
         df_data = DataFrame(tabla[1:], columns=tabla.iloc[0])
         df_data = df_data.apply(lambda x: pd.to_numeric(x, errors='ignore'))
-        df_data['vigenciadesde'] = df_data['vigenciadesde'].apply(lambda x: datetime.strptime(x, "%Y-%m-%dT%H:%M:%OS"))
-        df_data['vigenciahasta'] = df_data['vigenciahasta'].apply(lambda x: datetime.strptime(x, "%Y-%m-%dT%H:%M:%OS"))
+        df_data['vigenciadesde'] = pd.to_datetime(df_data['vigenciadesde'], format='%Y-%m-%dT%H:%M:%S.%f')
+        df_data['vigenciahasta'] = pd.to_datetime(df_data['vigenciahasta'], format='%Y-%m-%dT%H:%M:%S.%f')
 
     if start_date is None:
         start_date = df_data['vigenciahasta'].min().strftime('%Y-%m-%d')
@@ -222,3 +222,6 @@ def rmre_data(start_date=None, end_date=None, log_return=False, plot_data=False,
         return result
     else:
         raise ValueError("Error: Invalid 'frequency' argument. Should be one of 365 12, 4, or 2")
+    
+X = rmre_data()
+print(X)
