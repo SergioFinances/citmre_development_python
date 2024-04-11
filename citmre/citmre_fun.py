@@ -131,7 +131,7 @@ def rmre_data(start_date=None, end_date=None, log_return=False, plot_data=False,
         else:
             return f"{date.year}-2S"
 
-    val_dat = 1
+    val_dat = 0
 
     url = "https://www.datos.gov.co/resource/ceyp-9c7c.json?$limit=1000000"
 
