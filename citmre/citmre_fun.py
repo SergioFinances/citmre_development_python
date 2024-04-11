@@ -6,8 +6,10 @@ import numpy as np
 import re
 import plotly.express as px
 from requests.exceptions import RequestException
-from pandas import DataFrame, read_html
+from pandas import DataFrame
 from datetime import datetime
+from pandas.io.html import read_html
+from bs4 import BeautifulSoup
 
 def rmre_data(start_date=None, end_date=None, log_return=False, plot_data=False, frequency=365, type="last_date"):
 
@@ -129,7 +131,7 @@ def rmre_data(start_date=None, end_date=None, log_return=False, plot_data=False,
         else:
             return f"{date.year}-2S"
 
-    val_dat = 0
+    val_dat = 1
 
     url = "https://www.datos.gov.co/resource/ceyp-9c7c.json?$limit=1000000"
 
@@ -139,16 +141,22 @@ def rmre_data(start_date=None, end_date=None, log_return=False, plot_data=False,
         val_dat = 1
 
     if val_dat == 0:
-        json_data = response.text
-        df_data = DataFrame.from_records(json_data)
+        response = requests.get(url)
+        response.raise_for_status()
+        json_data = response.json()
+        df_data = pd.DataFrame(json_data)
         df_data['vigenciadesde'] = pd.to_datetime(df_data['vigenciadesde'], format='%Y-%m-%dT%H:%M:%S.%f')
         df_data['vigenciahasta'] = pd.to_datetime(df_data['vigenciahasta'], format='%Y-%m-%dT%H:%M:%S.%f')
     else:
         url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQdWRVkiRnMafOBPyTo55Y7kGfogywsTagcs2uiOqSeeCWrplBcAtUezRwhRhxOeeIiszB7VE8Yu7FZ/pubhtml?gid=478587454&single=true"
-        html = read_html(url)
-        tabla = html[0]
-        df_data = DataFrame(tabla[1:], columns=tabla.iloc[0])
-        df_data = df_data.apply(lambda x: pd.to_numeric(x, errors='ignore'))
+        response = requests.get(url)
+        soup = BeautifulSoup(response.content, "html.parser")
+        tabla_html = soup.find("table")
+        df_data = pd.read_html(str(tabla_html))[0]
+        df_data.columns = df_data.iloc[0]
+        df_data = df_data.iloc[1:].reset_index(drop=True)
+        df_data = df_data.drop(columns=df_data.columns[0])
+        df_data[df_data.columns[0]] = pd.to_numeric(df_data[df_data.columns[0]])
         df_data['vigenciadesde'] = pd.to_datetime(df_data['vigenciadesde'], format='%Y-%m-%dT%H:%M:%S.%f')
         df_data['vigenciahasta'] = pd.to_datetime(df_data['vigenciahasta'], format='%Y-%m-%dT%H:%M:%S.%f')
 
@@ -222,6 +230,3 @@ def rmre_data(start_date=None, end_date=None, log_return=False, plot_data=False,
         return result
     else:
         raise ValueError("Error: Invalid 'frequency' argument. Should be one of 365 12, 4, or 2")
-    
-X = rmre_data()
-print(X)
