@@ -5,6 +5,7 @@ import json
 import numpy as np
 import re
 import plotly.express as px
+import time
 from requests.exceptions import RequestException
 from pandas import DataFrame
 from datetime import datetime
@@ -132,11 +133,14 @@ def rmre_data(start_date=None, end_date=None, log_return=False, plot_data=False,
             return f"{date.year}-2S"
 
     val_dat = 0
-
     url = "https://www.datos.gov.co/resource/ceyp-9c7c.json?$limit=1000000"
 
     try:
-        response = requests.get(url)
+        start_time = time.time()
+        response = requests.get(url, timeout=10)
+        end_time = time.time()
+        if end_time - start_time > 10:
+            val_dat = 1
     except RequestException as e:
         val_dat = 1
 
