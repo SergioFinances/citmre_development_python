@@ -1,11 +1,10 @@
 ## Desciption
 
 The Colombian Index Tool (Market Rate Exchange) package downloads the 
-Colombian Market Rate from the source:
-<https://www.datos.gov.co/Econom-a-y-Finanzas/TRM/ceyp-9c7c/data>, for
+Colombian Market Rate from the source: [Portal de Datos Abiertos](https://www.datos.gov.co/Econom-a-y-Finanzas/TRM/ceyp-9c7c/data), for
 direct use in Python.
 
-[<img src="https://i.imgur.com/P1nQftf.png" width="100">]
+<img src="https://i.ibb.co/s6db4M4/logo.png" width="100">
 
 ## Example
 
@@ -26,3 +25,4 @@ rmre_splited = rmre_data(frequency=4, log_return=True, plot_data=True, type="mea
 rmre_splited = rmre_data('2000-01-01','2023-12-31', log_return=True)
 #> "Warning: The information will be obtained from the next business day, as the desired date is a holiday or weekend."
 ```
+<img src="https://i.ibb.co/mF5RLb1/README-example-2.png" alt="Example Image" style="width: 1000px; height: 360px;">

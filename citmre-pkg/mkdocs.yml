@@ -4,3 +4,8 @@ nav:
   - Home: index.md
   - Get started: Get_Started.md
   - Reference: references.md
+
+theme:
+  name: material
+  logo: https://i.ibb.co/s6db4M4/logo.png
+

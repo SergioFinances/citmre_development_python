@@ -1,4 +1,4 @@
-# cITMre
+## cITMre
 
 The cITMre library—Colombian Index Tool (Market Rate Exchange)—responds to the researcher's 
 economics and financial sciences needs to use the colombian Representative Market Rate Exchange. 
@@ -59,7 +59,7 @@ pd.head(data)
 
 In some research, the historical volatility is expected to be analysed for advanced econometric
 or financial studies. It is possible to use the function `log_return=TRUE` to change the series
-to log return based on the formula: lr(RMRE) = ln(Present Value / Past Value), in Default the 
+to log return based on the formula: $lr(RMRE) = ln(\frac{Present~value}{Past~Value})$, in Default the 
 series is presented in level data.
 
 ``` bash

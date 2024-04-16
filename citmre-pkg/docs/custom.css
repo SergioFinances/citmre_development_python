@@ -1,0 +1,4 @@
+/* Ajustar el tamaño del logo */
+.header .logo img {
+  max-height: 1000px; /* Ajusta el valor según el tamaño deseado */
+}
