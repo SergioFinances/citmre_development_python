@@ -2,4 +2,5 @@ site_name: cITMre package
 site_url: https://citmre.com
 nav:
   - Home: index.md
-
+  - Get started: Get_Started.md
+  - Reference: references.md
