@@ -1,3 +1,5 @@
+# cITMre
+
 The cITMre library—Colombian Index Tool (Market Rate Exchange)—responds to the researcher's 
 economics and financial sciences needs to use the colombian Representative Market Rate Exchange. 
 This package presents a practical solution for downloading the RMRE database. 
@@ -50,17 +52,21 @@ In economic or financial research, it is not necessary to take the whole time se
 end date. For example, we want to get the RMRE from March 18, 2005, to June 26, 2019, in an 
 object called `data` simplifying function result.
 
+``` bash
 data = rmre_data(start_date = "2005-03-18", end_date = "2019-06-26")
 pd.head(data)
+```
 
 In some research, the historical volatility is expected to be analysed for advanced econometric
 or financial studies. It is possible to use the function `log_return=TRUE` to change the series
 to log return based on the formula: lr(RMRE) = ln(Present Value / Past Value), in Default the 
 series is presented in level data.
 
+``` bash
 data_log = rmre_data(start_date = "2005-03-18", end_date = "2019-06-26", log_return = true)
 pd.head(data_log)
 pd.tail(data_log)
+```
 
 On some occasions, economic or financial variables do not necessarily use the same time-frequency
 of the daily series as in the RMRE. Colombia's GDP (Gross Domestic Product) is quarterly; therefore,
@@ -72,6 +78,7 @@ The `type` function can approximate the series on mean or last date data. When `
 the series gets the average value of the series in frequency. If `type = "last_date" is used, the 
 last data of the series is used in frequency. By default, the `type` is set to `last_date`.
 
+``` bash
 ### Monthly RMRE
 data_m = rmre_data(start_date = "1998-03-18", end_date = "2019-06-26",frequency = 12)
 pd.head(data_m)
@@ -86,16 +93,19 @@ pd.tail(data_q)
 data_s = rmre_data(start_date = "1998-03-18", end_date = "2019-06-26",frequency = 2, type = "mean")
 pd.head(data_s)
 pd.tail(data_s)
+```
 
 Finally, some researchers feel that displaying a dynamic graph increases the analysis and learning
 methods, which is why the `plot_data` option can display a Plotly line graph, allowing the user to
 analyse the data through the Viewer. This option works well
 with the other options of the `rmre_data` function.
 
+``` bash
 ### Monthly RMRE
 rmre_data(start_date = "1998-03-18", end_date = "2019-06-26",frequency = 12, plot_data = true)
+```
 
-# Final considerations
+## Final considerations
 
 This tool can be used for time series analysis with an xts class condition; therefore, the user can
 transform the series to ts if any tool conflicts with an xts series.
