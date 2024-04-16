@@ -214,16 +214,16 @@ def rmre_data(start_date=None, end_date=None, log_return=False, plot_data=False,
 
         if plot_data:
             if log_return:
-                title = 'Last Log Return' if type == 'mean' else 'Mean Log Return'
+                title_plot = 'Last Log Return' if type == 'mean' else 'Mean Log Return'
                 y_column = 'log_return'
             else:
-                title = 'Last rmre' if type == 'mean' else 'Mean rmre'
+                title_plot = 'Last rmre' if type == 'mean' else 'Mean rmre'
                 y_column = 'rmre'
 
             fig = px.line(result.reset_index(),
                         x='Month' if frequency == 12 else 'Quarter' if frequency == 4 else 'Semester',
                         y=y_column,
-                        title=title)
+                        title=title_plot)
             fig.update_layout(autosize=True)
             fig.show()
         
