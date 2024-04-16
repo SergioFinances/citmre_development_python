@@ -19,25 +19,6 @@ def rmre_data(start_date=None, end_date=None, log_return=False, plot_data=False,
     economics and financial sciences needs to use the colombian Representative Market Rate Exchange. 
     This package presents a practical solution for downloading the RMRE database. 
 
-    The tool allows us to obtain:
-
-    * Download the data series in daily, monthly, quarterly, and half-yearly frequencies.
-    * Can split the time series through start and end function
-    * Can transform the data set in log returns or level
-    * Can make a Dynamic graph through Plotly, or if is your preference can make a normal plot.
-
-    # Motivation
-
-    Obtaining information from the Colombian RMRE is relatively straightforward; the search in the 
-    official state database Portal de Datos Abiertos <www.datos.gov.co> allows the data to be 
-    downloaded in .xls or .csv. In economics or financial sciences, obtaining and loading this 
-    information into R can be frustrating, forcing many users to create a routine function linked 
-    to the database limited to the user's expertise. Thus, this tool aims to facilitate both the 
-    loading of data and the use of essential RMRE time series analysis tools.
-
-    Note: The information discounts weekends and holidays; the function approximates the nearest 
-    trade date.
-
     # Parameters:
 
     * start_date An initial date in the "YYYY-MM-DD" type; by default, the series starts on the 
@@ -222,14 +203,30 @@ def rmre_data(start_date=None, end_date=None, log_return=False, plot_data=False,
 
         result = result.rename('log_return' if log_return else 'rmre')
 
+        #if plot_data:
+        #    y_column = 'rmre' if log_return == False else 'log_return'
+        #    fig = px.line(result.reset_index(),
+        #                  x='Month' if frequency == 12 else 'Quarter' if frequency == 4 else 'Semester',
+        #                  y=y_column,
+        #                  title='Mean Log Return' if type == 'mean' else 'Last Log Return')
+        #    fig.update_layout(autosize=True)
+        #    fig.show()
+
         if plot_data:
-            y_column = 'rmre' if log_return == False else 'log_return'
+            if log_return:
+                title = 'Last Log Return' if type == 'mean' else 'Mean Log Return'
+                y_column = 'log_return'
+            else:
+                title = 'Last rmre' if type == 'mean' else 'Mean rmre'
+                y_column = 'rmre'
+
             fig = px.line(result.reset_index(),
-                          x='Month' if frequency == 12 else 'Quarter' if frequency == 4 else 'Semester',
-                          y=y_column,
-                          title='Mean Log Return' if type == 'mean' else 'Last Log Return')
+                        x='Month' if frequency == 12 else 'Quarter' if frequency == 4 else 'Semester',
+                        y=y_column,
+                        title=title)
             fig.update_layout(autosize=True)
             fig.show()
+        
 
         return result
     else:
