@@ -1,8 +1,0 @@
-/* Estilos para el logo en la barra de navegación */
-.md-header__brand-logo {
-    background-image: url(C:\Users\sergiosierra\OneDrive - itm.edu.co\Con Sergio Sierra\citmre\citmre_development_python\man\figureslogo.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: 30px;  /* Ancho del logo */
-    height: 30px; /* Alto del logo */
-}
