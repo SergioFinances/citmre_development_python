@@ -44,8 +44,19 @@ Once the package is installed, use the `rmre_data()` function to obtain the tota
 ``` bash
 from citmre.citmre_fun import rmre_data
 import pandas as pd
-pd.head(rmre_data())
+
+data = rmre_data(plot_data= True)
+data.head()
+
+#>Date
+#>1991-12-02    643.42
+#>1991-12-03    639.22
+#>1991-12-04    635.70
+#>1991-12-05    631.51
+#>1991-12-06    627.16
 ```
+
+<img src="https://i.ibb.co/mF5RLb1/README-example-2.png" alt="Example Image" style="width: 1000px; height: 360px;">
 
 In economic or financial research, it is not necessary to take the whole time series; use 
 `start_date` and `end_date` under the format "YYYYY-MM_DD" to obtain a specific start and 
@@ -53,20 +64,47 @@ end date. For example, we want to get the RMRE from March 18, 2005, to June 26, 
 object called `data` simplifying function result.
 
 ``` bash
-data = rmre_data(start_date = "2005-03-18", end_date = "2019-06-26")
-pd.head(data)
+data = rmre_data(start_date = "2005-03-18", end_date = "2019-06-26", plot_data= True)
+data.head()
+
+#>Date
+#>2005-03-18    2374.46
+#>2005-03-22    2371.43
+#>2005-03-23    2361.78
+#>2005-03-28    2382.30
+#>2005-03-29    2397.25
 ```
+
+<img src="https://i.ibb.co/Q99x7Ny/mkdocs-example2.png" alt="Example Image" style="width: 1000px; height: 360px;">
 
 In some research, the historical volatility is expected to be analysed for advanced econometric
 or financial studies. It is possible to use the function `log_return=TRUE` to change the series
-to log return based on the formula: $lr(RMRE) = ln(\frac{Present~value}{Past~Value})$, in Default the 
+to log return based on the formula: $ lr(RMRE) = ln(\frac{Present~value}{Past~Value}) $, in Default the 
 series is presented in level data.
 
 ``` bash
-data_log = rmre_data(start_date = "2005-03-18", end_date = "2019-06-26", log_return = true)
-pd.head(data_log)
-pd.tail(data_log)
+data_log = rmre_data(start_date = "2005-03-18", end_date = "2019-06-26", log_return = True, plot_data= True)
+print(data_log.head())
+print(data_log.tail())
+
+#>Date
+#>2005-03-22   -0.001277
+#>2005-03-23   -0.004078
+#>2005-03-28    0.008651
+#>2005-03-29    0.006256
+#>2005-03-30   -0.001641
+#>Name: log_return, dtype: float64
+
+#>Date
+#>2019-06-19   -0.006609
+#>2019-06-20   -0.004934
+#>2019-06-21   -0.014541
+#>2019-06-25   -0.003391
+#>2019-06-26   -0.001261
+#>Name: log_return, dtype: float64
 ```
+
+<img src="https://i.ibb.co/9WFDPTj/mkdocs-example3.png" alt="Example Image" style="width: 1000px; height: 360px;">
 
 On some occasions, economic or financial variables do not necessarily use the same time-frequency
 of the daily series as in the RMRE. Colombia's GDP (Gross Domestic Product) is quarterly; therefore,
@@ -80,32 +118,84 @@ last data of the series is used in frequency. By default, the `type` is set to `
 
 ``` bash
 ### Monthly RMRE
-data_m = rmre_data(start_date = "1998-03-18", end_date = "2019-06-26",frequency = 12)
-pd.head(data_m)
-pd.tail(data_m)
+data = rmre_data(start_date = "2005-03-18", end_date = "2019-06-26", plot_data= True, frequency = 12)
+print(data.head())
+print(data.tail())
 
-### Quarterly RMRE
-data_q = rmre_data(start_date = "1998-03-18", end_date = "2019-06-26",frequency = 4)
-pd.head(data_q)
-pd.tail(data_q)
+#>Date
+#>2005-03-18    2374.46
+#>2005-03-22    2371.43
+#>2005-03-23    2361.78
+#>2005-03-28    2382.30
+#>2005-03-29    2397.25
+#>Name: rmre, dtype: float64
 
-### Half-year RMRE
-data_s = rmre_data(start_date = "1998-03-18", end_date = "2019-06-26",frequency = 2, type = "mean")
-pd.head(data_s)
-pd.tail(data_s)
+#>Date
+#>2019-06-19    3264.98
+#>2019-06-20    3248.91
+#>2019-06-21    3202.01
+#>2019-06-25    3191.17
+#>2019-06-26    3187.15
+#>Name: rmre, dtype: float64
 ```
 
-Finally, some researchers feel that displaying a dynamic graph increases the analysis and learning
-methods, which is why the `plot_data` option can display a Plotly line graph, allowing the user to
-analyse the data through the Viewer. This option works well
-with the other options of the `rmre_data` function.
+<img src="https://i.ibb.co/GVns7GT/mkdocs-example4.png" alt="Example Image" style="width: 1000px; height: 360px;">
 
 ``` bash
-### Monthly RMRE
-rmre_data(start_date = "1998-03-18", end_date = "2019-06-26",frequency = 12, plot_data = true)
+### Quarterly RMRE
+data_q = rmre_data(start_date = "2005-03-18", end_date = "2019-06-26", plot_data= True, frequency = 4)
+print(data_q.head())
+print(data_q.tail())
+
+#>Quarter
+#>2005Q1    2376.48
+#>2005Q2    2331.81
+#>2005Q3    2289.61
+#>2005Q4    2282.35
+#>2006Q1    2289.98
+
+#>Name: rmre, dtype: float64
+#>Quarter
+#>2018Q2    2945.09
+#>2018Q3    2989.58
+#>2018Q4    3275.01
+#>2019Q1    3190.94
+#>2019Q2    3187.15
+#>Name: rmre, dtype: float64
 ```
+
+<img src="https://i.ibb.co/zXJx4zK/mkdocs-example5.png" alt="Example Image" style="width: 1000px; height: 360px;">
+
+``` bash
+### Half-year RMRE
+data_s = rmre_data(start_date = "2005-03-18", end_date = "2019-06-26", plot_data= True, frequency = 2)
+print(data_s.head())
+print(data_s.tail())
+
+#>Semester
+#>2005-1S    2331.81
+#>2005-2S    2282.35
+#>2006-1S    2633.12
+#>2006-2S    2233.31
+#>2007-1S    1958.09
+#>Name: rmre, dtype: float64
+
+#>Semester
+#>2017-1S    3038.26
+#>2017-2S    2971.63
+#>2018-1S    2945.09
+#>2018-2S    3275.01
+#>2019-1S    3187.15
+#>Name: rmre, dtype: float64
+```
+
+<img src="https://i.ibb.co/VxyzZsg/mkdocs-example6.png" alt="Example Image" style="width: 1000px; height: 360px;">
 
 ## Final considerations
 
 This tool can be used for time series analysis with an xts class condition; therefore, the user can
 transform the series to ts if any tool conflicts with an xts series.
+
+## References
+
+Source: [Portal de Datos Abiertos](http://www.datos.gov.co/)
