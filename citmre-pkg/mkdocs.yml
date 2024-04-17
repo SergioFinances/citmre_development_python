@@ -1,5 +1,5 @@
 site_name: cITMre package
-site_url: https://citmre.com
+site_url: https://SergioFinances.github.io/citmre_development_python/
 nav:
   - Home: index.md
   - Get started: Get_Started.md
