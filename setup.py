@@ -17,7 +17,7 @@ MAINTAINERS = [
 setup(
     name = 'cITMre',
     packages = ['citmre'],
-    version = '0.1.0',
+    version = '0.1.4',
     license='MIT',
     description = DESCRIPTION,
     long_description_content_type="text/markdown",
