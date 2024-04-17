@@ -214,10 +214,10 @@ def rmre_data(start_date=None, end_date=None, log_return=False, plot_data=False,
 
         if plot_data:
             if log_return:
-                title_plot = 'Last Log Return' if type == 'mean' else 'Mean Log Return'
+                title_plot = 'Mean Log Return' if type == 'mean' else 'Last Log Return'
                 y_column = 'log_return'
             else:
-                title_plot = 'Last rmre' if type == 'mean' else 'Mean rmre'
+                title_plot = 'Mean rmre' if type == 'mean' else 'Last rmre'
                 y_column = 'rmre'
 
             fig = px.line(result.reset_index(),
@@ -227,7 +227,6 @@ def rmre_data(start_date=None, end_date=None, log_return=False, plot_data=False,
             fig.update_layout(autosize=True)
             fig.show()
         
-
         return result
     else:
         raise ValueError("Error: Invalid 'frequency' argument. Should be one of 365 12, 4, or 2")
