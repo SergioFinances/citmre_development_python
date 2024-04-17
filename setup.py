@@ -17,7 +17,7 @@ MAINTAINERS = [
 setup(
     name = 'cITMre',
     packages = ['citmre'],
-    version = '0.1.4',
+    version = '0.1.0',
     license='MIT',
     description = DESCRIPTION,
     long_description_content_type="text/markdown",
@@ -35,7 +35,7 @@ setup(
         'bs4'    
     ],
     classifiers=[
-        'Development Status :: 5 - Production/Stable',
+        'Development Status :: 3 - Alpha',
         'Intended Audience :: Education',
         'Intended Audience :: Science/Research',
         'Topic :: Utilities',
