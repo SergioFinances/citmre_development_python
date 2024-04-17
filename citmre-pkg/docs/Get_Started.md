@@ -139,7 +139,7 @@ print(data.tail())
 #>Name: rmre, dtype: float64
 ```
 
-<img src="https://i.ibb.co/GVns7GT/mkdocs-example4.png" alt="Example Image" style="width: 1000px; height: 360px;">
+<img src="https://i.ibb.co/yktpcRY/mkdocs-example4.png" alt="Example Image" style="width: 1000px; height: 360px;">
 
 ``` bash
 ### Quarterly RMRE
@@ -164,7 +164,7 @@ print(data_q.tail())
 #>Name: rmre, dtype: float64
 ```
 
-<img src="https://i.ibb.co/zXJx4zK/mkdocs-example5.png" alt="Example Image" style="width: 1000px; height: 360px;">
+<img src="https://i.ibb.co/3Ffh5Gs/mkdocs-example5.png" alt="Example Image" style="width: 1000px; height: 360px;">
 
 ``` bash
 ### Half-year RMRE
@@ -189,7 +189,7 @@ print(data_s.tail())
 #>Name: rmre, dtype: float64
 ```
 
-<img src="https://i.ibb.co/VxyzZsg/mkdocs-example6.png" alt="Example Image" style="width: 1000px; height: 360px;">
+<img src="https://i.ibb.co/9W33HWZ/mkdocs-example6.png" alt="Example Image" style="width: 1000px; height: 360px;">
 
 ## Final considerations
 
