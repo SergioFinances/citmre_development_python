@@ -1,6 +1,1 @@
-## Function reference
-
-### All functions
-
-**rmre_data()** <br>
-> rmre_data (Representative Market Rate Exchange) dataset
+Superintendencia Financiera de Colombia. (s.f.). Tasa Representativa del Mercado. Datos Abiertos. Recuperado de [https://www.datos.gov.co/Econom-a-y-Finanzas/TRM/ceyp-9c7c/data](https://www.datos.gov.co/Econom-a-y-Finanzas/TRM/ceyp-9c7c/data)
