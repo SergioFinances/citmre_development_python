@@ -1,0 +1,685 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://SergioFinances.github.io/citmre_development_python/Get_Started/">
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../references/">
+      
+      
+      <link rel="icon" href="https://i.ibb.co/hKkjrpy/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.18">
+    
+    
+      
+        <title>Get started - cITMre package</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.66ac8b77.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#citmre" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="cITMre package" class="md-header__button md-logo" aria-label="cITMre package" data-md-component="logo">
+      
+  <img src="https://i.ibb.co/s6db4M4/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            cITMre package
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Get started
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="cITMre package" class="md-nav__button md-logo" aria-label="cITMre package" data-md-component="logo">
+      
+  <img src="https://i.ibb.co/s6db4M4/logo.png" alt="logo">
+
+    </a>
+    cITMre package
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Get started
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Get started
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#citmre" class="md-nav__link">
+    <span class="md-ellipsis">
+      cITMre
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#motivation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Motivation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parameters
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#applied-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Applied Example
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#final-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Final considerations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reference
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#citmre" class="md-nav__link">
+    <span class="md-ellipsis">
+      cITMre
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#motivation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Motivation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parameters
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#applied-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Applied Example
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#final-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Final considerations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>Get started</h1>
+
+<h2 id="citmre">cITMre</h2>
+<p>The cITMre library—Colombian Index Tool (Market Rate Exchange)—responds to the researcher's 
+economics and financial sciences needs to use the colombian Representative Market Rate Exchange. 
+This package presents a practical solution for downloading the RMRE database. </p>
+<p>The tool allows us to obtain:</p>
+<ul>
+<li>Download the data series in daily, monthly, quarterly, and half-yearly frequencies.</li>
+<li>Can split the time series through start and end function</li>
+<li>Can transform the data set in log returns or level</li>
+<li>Can make a Dynamic graph through Plotly, or if is your preference can make a normal plot.</li>
+</ul>
+<h2 id="motivation">Motivation</h2>
+<p>Obtaining information from the Colombian RMRE is relatively straightforward; the search in the 
+official state database Portal de Datos Abiertos <www.datos.gov.co> allows the data to be 
+downloaded in .xls or .csv. In economics or financial sciences, obtaining and loading this 
+information into R can be frustrating, forcing many users to create a routine function linked 
+to the database limited to the user's expertise. Thus, this tool aims to facilitate both the 
+loading of data and the use of essential RMRE time series analysis tools.</p>
+<p>Note: The information discounts weekends and holidays; the function approximates the nearest 
+trade date.</p>
+<h2 id="parameters">Parameters</h2>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Default Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>start_date</td>
+<td>An initial date in the "YYYY-MM-DD" type; by default, the series starts on the first date of the resource.</td>
+<td>First day of the resource</td>
+</tr>
+<tr>
+<td>end_date</td>
+<td>A final date in the "YYYY-MM-DD" form; by default, it shows the updated last date on the resource.</td>
+<td>Updated last date on the resource</td>
+</tr>
+<tr>
+<td>log_return</td>
+<td>Show the log return of the RMRE (Representative Market Rate Exchange) dataset; if it is TRUE, show the log return dataset; if it is FALSE, show the level dataset; in default, show the level dataset.</td>
+<td>FALSE</td>
+</tr>
+<tr>
+<td>plot_data</td>
+<td>Show a Plotly linear graph data set; by default, the argument is false, and the graph is built in the Viewer option. You can use the basic plot if the user does not use the plot_data option.</td>
+<td>FALSE</td>
+</tr>
+<tr>
+<td>frequency</td>
+<td>Show frequencies for the data set in daily (365), month (12), quarter (4), and half-year (2); in default, the dataset is the daily frequency.</td>
+<td>Daily (365)</td>
+</tr>
+<tr>
+<td>type</td>
+<td>It works only with 12, 4, 2 frequencies, showing the dataset using the last date ("last_date") or doing a mean ("mean") in the frequency series. By default, the type is "last_date".</td>
+<td>"last_date" by default</td>
+</tr>
+</tbody>
+</table>
+<h2 id="applied-example">Applied Example</h2>
+<p>If you want to use <code>citmre</code>, perform the package installation process using <code>pip install 
+cITMre=0.1.0</code> and load the <code>from citmre.citmre_fun import rmre_data</code>.
+Once the package is installed, use the <code>rmre_data()</code> function to obtain the total RMRE series 
+(the Colombian state has RMRE data since 1991-12-02); the data loaded is an XTS series.</p>
+<pre><code class="language-bash">from citmre.citmre_fun import rmre_data
+import pandas as pd
+
+data = rmre_data(plot_data= True)
+data.head()
+
+#&gt;Date
+#&gt;1991-12-02    643.42
+#&gt;1991-12-03    639.22
+#&gt;1991-12-04    635.70
+#&gt;1991-12-05    631.51
+#&gt;1991-12-06    627.16
+</code></pre>
+<p><img src="https://i.ibb.co/mF5RLb1/README-example-2.png" alt="Example Image" style="width: 1000px; height: 360px;"></p>
+<p>In economic or financial research, it is not necessary to take the whole time series; use 
+<code>start_date</code> and <code>end_date</code> under the format "YYYYY-MM_DD" to obtain a specific start and 
+end date. For example, we want to get the RMRE from March 18, 2005, to June 26, 2019, in an 
+object called <code>data</code> simplifying function result.</p>
+<pre><code class="language-bash">data = rmre_data(start_date = &quot;2005-03-18&quot;, end_date = &quot;2019-06-26&quot;, plot_data= True)
+data.head()
+
+#&gt;Date
+#&gt;2005-03-18    2374.46
+#&gt;2005-03-22    2371.43
+#&gt;2005-03-23    2361.78
+#&gt;2005-03-28    2382.30
+#&gt;2005-03-29    2397.25
+</code></pre>
+<p><img src="https://i.ibb.co/Q99x7Ny/mkdocs-example2.png" alt="Example Image" style="width: 1000px; height: 360px;"></p>
+<p>In some research, the historical volatility is expected to be analysed for advanced econometric
+or financial studies. It is possible to use the function <code>log_return=TRUE</code> to change the series
+to log return based on the formula: $ lr(RMRE) = ln(\frac{Present~value}{Past~Value}) $, in Default the 
+series is presented in level data.</p>
+<pre><code class="language-bash">data_log = rmre_data(start_date = &quot;2005-03-18&quot;, end_date = &quot;2019-06-26&quot;, log_return = True, plot_data= True)
+print(data_log.head())
+print(data_log.tail())
+
+#&gt;Date
+#&gt;2005-03-22   -0.001277
+#&gt;2005-03-23   -0.004078
+#&gt;2005-03-28    0.008651
+#&gt;2005-03-29    0.006256
+#&gt;2005-03-30   -0.001641
+#&gt;Name: log_return, dtype: float64
+
+#&gt;Date
+#&gt;2019-06-19   -0.006609
+#&gt;2019-06-20   -0.004934
+#&gt;2019-06-21   -0.014541
+#&gt;2019-06-25   -0.003391
+#&gt;2019-06-26   -0.001261
+#&gt;Name: log_return, dtype: float64
+</code></pre>
+<p><img src="https://i.ibb.co/9WFDPTj/mkdocs-example3.png" alt="Example Image" style="width: 1000px; height: 360px;"></p>
+<p>On some occasions, economic or financial variables do not necessarily use the same time-frequency
+of the daily series as in the RMRE. Colombia's GDP (Gross Domestic Product) is quarterly; therefore,
+the RMRE daily series must be transformed into a quarterly one. The <code>frequency</code> function displays
+the RMRE series in monthly (12), quarterly (4) and half-yearly (2) series. By default, the daily
+series will be (365). Frequencies can also be transformed to log_return.</p>
+<p>The <code>type</code> function can approximate the series on mean or last date data. When <code>type = "mean" is used,
+the series gets the average value of the series in frequency. If</code>type = "last_date" is used, the 
+last data of the series is used in frequency. By default, the <code>type</code> is set to <code>last_date</code>.</p>
+<pre><code class="language-bash">### Monthly RMRE
+data = rmre_data(start_date = &quot;2005-03-18&quot;, end_date = &quot;2019-06-26&quot;, plot_data= True, frequency = 12)
+print(data.head())
+print(data.tail())
+
+#&gt;Date
+#&gt;2005-03-18    2374.46
+#&gt;2005-03-22    2371.43
+#&gt;2005-03-23    2361.78
+#&gt;2005-03-28    2382.30
+#&gt;2005-03-29    2397.25
+#&gt;Name: rmre, dtype: float64
+
+#&gt;Date
+#&gt;2019-06-19    3264.98
+#&gt;2019-06-20    3248.91
+#&gt;2019-06-21    3202.01
+#&gt;2019-06-25    3191.17
+#&gt;2019-06-26    3187.15
+#&gt;Name: rmre, dtype: float64
+</code></pre>
+<p><img src="https://i.ibb.co/yktpcRY/mkdocs-example4.png" alt="Example Image" style="width: 1000px; height: 360px;"></p>
+<pre><code class="language-bash">### Quarterly RMRE
+data_q = rmre_data(start_date = &quot;2005-03-18&quot;, end_date = &quot;2019-06-26&quot;, plot_data= True, frequency = 4)
+print(data_q.head())
+print(data_q.tail())
+
+#&gt;Quarter
+#&gt;2005Q1    2376.48
+#&gt;2005Q2    2331.81
+#&gt;2005Q3    2289.61
+#&gt;2005Q4    2282.35
+#&gt;2006Q1    2289.98
+
+#&gt;Name: rmre, dtype: float64
+#&gt;Quarter
+#&gt;2018Q2    2945.09
+#&gt;2018Q3    2989.58
+#&gt;2018Q4    3275.01
+#&gt;2019Q1    3190.94
+#&gt;2019Q2    3187.15
+#&gt;Name: rmre, dtype: float64
+</code></pre>
+<p><img src="https://i.ibb.co/3Ffh5Gs/mkdocs-example5.png" alt="Example Image" style="width: 1000px; height: 360px;"></p>
+<pre><code class="language-bash">### Half-year RMRE
+data_s = rmre_data(start_date = &quot;2005-03-18&quot;, end_date = &quot;2019-06-26&quot;, plot_data= True, frequency = 2)
+print(data_s.head())
+print(data_s.tail())
+
+#&gt;Semester
+#&gt;2005-1S    2331.81
+#&gt;2005-2S    2282.35
+#&gt;2006-1S    2633.12
+#&gt;2006-2S    2233.31
+#&gt;2007-1S    1958.09
+#&gt;Name: rmre, dtype: float64
+
+#&gt;Semester
+#&gt;2017-1S    3038.26
+#&gt;2017-2S    2971.63
+#&gt;2018-1S    2945.09
+#&gt;2018-2S    3275.01
+#&gt;2019-1S    3187.15
+#&gt;Name: rmre, dtype: float64
+</code></pre>
+<p><img src="https://i.ibb.co/9W33HWZ/mkdocs-example6.png" alt="Example Image" style="width: 1000px; height: 360px;"></p>
+<h2 id="final-considerations">Final considerations</h2>
+<p>This tool can be used for time series analysis with an xts class condition; therefore, the user can
+transform the series to ts if any tool conflicts with an xts series.</p>
+<h2 id="references">References</h2>
+<p>Source: <a href="http://www.datos.gov.co/">Portal de Datos Abiertos</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.3220b9d7.min.js"></script>
+      
+    
+  </body>
+</html>
