@@ -14,7 +14,7 @@ from bs4 import BeautifulSoup
 
 
 def rmre_data(start_date=None, end_date=None, log_return=False, plot_data=False, frequency=365, type="last_date"):
-    """rmre_data _summary_
+    """rmre_data Retrieve and process RMRE (Representative Market Rate of Exchange) data.
 
     Parameters
     ----------
