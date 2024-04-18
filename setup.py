@@ -5,7 +5,7 @@ this_directory = Path(__file__).parent
 long_description = (this_directory / "README.md").read_text()
 
 VERSION = '0.1.0'
-DESCRIPTION = 'The Colombian Index Tool (Market Rate Exchange) package downloads the Colombian Market Rate from the source: Portal de Datos Abiertos <www.datos.gov.co>'
+DESCRIPTION = 'Downloads the Representative Market Rate Exchange (RMRE) from the <www.datos.gov.co> source. Allows setting the data series in time frequencies, splitting the time series through start and end functions, transforming the data set in log returns or levels, and making a Dynamic graph.'
 PACKAGE_NAME = 'cITMre'
 AUTHOR = ['Sergio Andrés Sierra Luján', 'David Esteban Rodríguez Guevara']
 EMAIL = ['sergiochess95@gmail.com', 'davestss@hotmail.com']

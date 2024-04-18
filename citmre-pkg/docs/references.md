@@ -1,1 +1,1 @@
-Superintendencia Financiera de Colombia. (s.f.). Tasa Representativa del Mercado. Datos Abiertos. Recuperado de [https://www.datos.gov.co/Econom-a-y-Finanzas/TRM/ceyp-9c7c/data](https://www.datos.gov.co/Econom-a-y-Finanzas/TRM/ceyp-9c7c/data)
+Superintendencia Financiera de Colombia. (s.f.). Tasa Representativa del Mercado. Datos Abiertos. Recuperado de [https://www.datos.gov.co](https://www.datos.gov.co)
