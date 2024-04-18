@@ -12,16 +12,43 @@ from datetime import datetime
 from pandas.io.html import read_html
 from bs4 import BeautifulSoup
 
+
 def rmre_data(start_date=None, end_date=None, log_return=False, plot_data=False, frequency=365, type="last_date"):
+    """rmre_data _summary_
 
-    """_summary_
+    Parameters
+    ----------
+    start_date : _type_, optional
+        _description_, by default None
+    end_date : _type_, optional
+        _description_, by default None
+    log_return : bool, optional
+        _description_, by default False
+    plot_data : bool, optional
+        _description_, by default False
+    frequency : int, optional
+        _description_, by default 365
+    type : str, optional
+        _description_, by default "last_date"
+
+    Returns
+    -------
+    _type_
+        _description_
+
+    Raises
+    ------
+    ValueError
+        _description_
+    ValueError
+        _description_
+    ValueError
+        _description_
+    ValueError
+        _description_
+    ValueError
+        _description_
     """
-
-    def calculate_semester(date):
-        if date.month <= 6:
-            return f"{date.year}-1S"
-        else:
-            return f"{date.year}-2S"
 
     val_dat = 0
     url = "https://www.datos.gov.co/resource/ceyp-9c7c.json?$limit=1000000"
@@ -68,6 +95,12 @@ def rmre_data(start_date=None, end_date=None, log_return=False, plot_data=False,
         raise ValueError("Error: 'start_date' is greater than 'end_date'")
     if type not in ["mean", "last_date"]:
         raise ValueError("Error: 'type' must be 'mean' or 'last_date'")
+
+    def calculate_semester(date):
+        if date.month <= 6:
+            return f"{date.year}-1S"
+        else:
+            return f"{date.year}-2S"
 
     df_filtered = df_data[(df_data['vigenciahasta'] >= start_date) & (df_data['vigenciahasta'] <= end_date)]
     df_filtered = df_filtered[['vigenciahasta', 'valor']]
