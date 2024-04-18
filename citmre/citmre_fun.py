@@ -18,36 +18,34 @@ def rmre_data(start_date=None, end_date=None, log_return=False, plot_data=False,
 
     Parameters
     ----------
-    start_date : _type_, optional
-        _description_, by default None
-    end_date : _type_, optional
-        _description_, by default None
+    start_date : str, optional
+        Start date in 'year-month-day' format, by default None
+    end_date : str, optional
+        End date in 'year-month-day' format, by default None
     log_return : bool, optional
-        _description_, by default False
+        Whether to calculate log returns, by default False
     plot_data : bool, optional
-        _description_, by default False
+        Whether to plot the data, by default False
     frequency : int, optional
-        _description_, by default 365
+        Frequency of data aggregation (365, 12, 4, or 2), by default 365
     type : str, optional
-        _description_, by default "last_date"
+        ype of aggregation ('mean' or 'last_date'), by default "last_date"
 
     Returns
     -------
-    _type_
-        _description_
+    pandas.DataFrame or pandas.Series
+        Processed RMRE data based on input parameters.
 
     Raises
     ------
     ValueError
-        _description_
+        If start_date or end_date format is invalid.
     ValueError
-        _description_
+        _If start_date is greater than end_date.
     ValueError
-        _description_
+        If type is not 'mean' or 'last_date'.
     ValueError
-        _description_
-    ValueError
-        _description_
+        If frequency is not one of 365, 12, 4, or 2.
     """
 
     def calculate_semester(date):
