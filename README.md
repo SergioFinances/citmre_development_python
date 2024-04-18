@@ -1,6 +1,6 @@
 # cITMre
 
-Downloads the Representative Market Rate Exchange (RMRE) from the [www.datos.gov.co](www.datos.gov.co) source. Allows setting the data series in time frequencies, splitting the time series through start and end functions, transforming the data set in log returns or levels, and making a Dynamic graph.
+Downloads the Representative Market Rate Exchange (RMRE) from the [www.datos.gov.co](https://www.datos.gov.co) source. Allows setting the data series in time frequencies, splitting the time series through start and end functions, transforming the data set in log returns or levels, and making a Dynamic graph.
 
 [<img src="https://i.imgur.com/P1nQftf.png" width="100">](https://sergiofinances.github.io/citmre_development_python/)
 

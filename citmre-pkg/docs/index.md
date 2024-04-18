@@ -1,7 +1,6 @@
 ## Description
 
-The Colombian Index Tool (Market Rate Exchange) package downloads the 
-Colombian Market Rate from the source: [Portal de Datos Abiertos](https://www.datos.gov.co/Econom-a-y-Finanzas/TRM/ceyp-9c7c/data)
+Downloads the Representative Market Rate Exchange (RMRE) from the [www.datos.gov.co](https://www.datos.gov.co) source. Allows setting the data series in time frequencies, splitting the time series through start and end functions, transforming the data set in log returns or levels, and making a Dynamic graph.
 
 ## Example
 
