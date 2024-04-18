@@ -2,8 +2,7 @@
 
 The Colombian Index Tool (Market Rate Exchange) package downloads the 
 Colombian Market Rate from the source:
-<https://www.datos.gov.co/Econom-a-y-Finanzas/TRM/ceyp-9c7c/data>, for
-direct use in Python.
+<https://www.datos.gov.co/Econom-a-y-Finanzas/TRM/ceyp-9c7c/data>
 
 [<img src="https://i.imgur.com/P1nQftf.png" width="100">](https://sergiofinances.github.io/citmre_development_python/)
 

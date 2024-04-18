@@ -1,8 +1,7 @@
 ## Description
 
 The Colombian Index Tool (Market Rate Exchange) package downloads the 
-Colombian Market Rate from the source: [Portal de Datos Abiertos](https://www.datos.gov.co/Econom-a-y-Finanzas/TRM/ceyp-9c7c/data), for
-direct use in Python.
+Colombian Market Rate from the source: [Portal de Datos Abiertos](https://www.datos.gov.co/Econom-a-y-Finanzas/TRM/ceyp-9c7c/data)
 
 ## Example
 

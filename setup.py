@@ -5,7 +5,7 @@ this_directory = Path(__file__).parent
 long_description = (this_directory / "README.md").read_text()
 
 VERSION = '0.1.0'
-DESCRIPTION = 'The Colombian Index Tool (Market Rate Exchange) package downloads the Colombian Market Rate from the source: Portal de Datos Abiertos <www.datos.gov.co>, for direct use in Python.'
+DESCRIPTION = 'The Colombian Index Tool (Market Rate Exchange) package downloads the Colombian Market Rate from the source: Portal de Datos Abiertos <www.datos.gov.co>'
 PACKAGE_NAME = 'cITMre'
 AUTHOR = ['Sergio Andrés Sierra Luján', 'David Esteban Rodríguez Guevara']
 EMAIL = ['sergiochess95@gmail.com', 'davestss@hotmail.com']
