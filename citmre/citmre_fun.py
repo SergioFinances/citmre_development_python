@@ -281,5 +281,3 @@ scrolled_text.insert(tk.END, x)
 
 # Iniciar el bucle de eventos
 root.mainloop()
-
-
