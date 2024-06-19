@@ -12,6 +12,9 @@ from datetime import datetime
 from pandas.io.html import read_html
 from bs4 import BeautifulSoup
 
+import requests
+from io import BytesIO
+
 
 def rmre_data(start_date=None, end_date=None, log_return=False, plot_data=False, frequency=365, type="last_date"):
     """rmre_data Retrieve and process RMRE (Representative Market Rate of Exchange) data.
@@ -171,3 +174,82 @@ def rmre_data(start_date=None, end_date=None, log_return=False, plot_data=False,
         return result
     else:
         raise ValueError("Error: Invalid 'frequency' argument. Should be one of 365 12, 4, or 2")
+    
+
+
+import tkinter as tk
+from tkinter import scrolledtext
+
+pd.set_option('display.max_rows', None)  # Mostrar todas las filas
+pd.set_option('display.max_columns', None)  # Mostrar todas las columnas
+
+
+
+def interventionrate_data():
+    link = "https://totoro.banrep.gov.co/analytics/saw.dll?Download&Format=excel2007&Extension=.xlsx&BypassCache=true&path=%2Fshared%2fSeries%20Estad%c3%adsticas_T%2F1.%20Tasa%20de%20intervenci%C3%B3n%20de%20pol%C3%ADtica%20monetaria%2F1.2.TIP_Serie%20hist%C3%B3rica%20diaria%20IQY&lang=es&NQUser=publico&NQPassword=publico123&SyncOperation=1"
+    headers = {
+        "Host": "totoro.banrep.gov.co",
+        "User-Agent": "GoogleBot/2.1 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        "Accept-Language": "es-ES,es;q=0.8,en-US;q=0.5,en;q=0.3",
+        "Accept-Encoding": "gzip, deflate",
+        "Connection": "keep-alive"
+    }
+    response = requests.get(link, headers=headers)
+    if response.status_code == 200:
+        with BytesIO(response.content) as f:
+            x = pd.read_excel(f, sheet_name=0)
+        x = x.iloc[8:-4]
+        x.columns = ["date", "interventionrate"]
+        x["date"] = pd.to_datetime(x["date"])
+        x["interventionrate"] = pd.to_numeric(x["interventionrate"], errors='coerce')
+        x = x.sort_values(by="date")
+        x["interventionrate"] = x["interventionrate"] / 100
+        x = x.reset_index(drop=True)
+        return x
+
+
+def ipc_data():
+    link = "https://totoro.banrep.gov.co/analytics/saw.dll?Download&Format=excel2007&Extension=.xls&BypassCache=true&lang=es&path=%2Fshared%2FSeries%20Estad%C3%ADsticas_T%2F1.%20IPC%20base%202018%2F1.2.%20Por%20a%C3%B1o%2F1.2.5.IPC_Serie_variaciones_IQY&NQUser=publico&NQPassword=publico123&SyncOperation=1"
+    headers = {
+        "Host": "totoro.banrep.gov.co",
+        "User-Agent": "GoogleBot/2.1 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        "Accept-Language": "es-ES,es;q=0.8,en-US;q=0.5,en;q=0.3",
+        "Accept-Encoding": "gzip, deflate",
+        "Connection": "keep-alive"
+    }
+    response = requests.get(link, headers=headers)
+    if response.status_code == 200:
+        with BytesIO(response.content) as f:
+            x = pd.read_excel(f, sheet_name=0)
+            x = x.iloc[12:-10]
+        x.columns = ["date", "index", "annual_inflation", "monthly_inflation", "Inflation_by_year"]
+        x["date"] = pd.to_datetime(x["date"].astype(str).str[:4] + x["date"].astype(str).str[4:] + '01', format='%Y%m%d')
+        x["date"] = x["date"].dt.strftime('%Y-%m')
+        x["index"] = pd.to_numeric(x["index"], errors='coerce')
+        x["annual_inflation"] = pd.to_numeric(x["annual_inflation"], errors='coerce')
+        x["monthly_inflation"] = pd.to_numeric(x["monthly_inflation"], errors='coerce')
+        x["Inflation_by_year"] = pd.to_numeric(x["Inflation_by_year"], errors='coerce')
+        x = x.sort_values(by="date")
+        x = x.reset_index(drop=True)
+    return x
+
+
+x = ipc_data()
+
+# Crear la ventana principal
+root = tk.Tk()
+root.title("Visualización de DataFrame")
+
+# Crear un widget de scrolled text para mostrar el DataFrame
+scrolled_text = scrolledtext.ScrolledText(root, width=170, height=60)
+scrolled_text.pack()
+
+# Insertar los datos del DataFrame en el widget de scrolled text
+scrolled_text.insert(tk.END, x)
+
+# Iniciar el bucle de eventos
+root.mainloop()
+
+
