@@ -147,15 +147,6 @@ def rmre_data(start_date=None, end_date=None, log_return=False, plot_data=False,
 
         result = result.rename('log_return' if log_return else 'rmre')
 
-        #if plot_data:
-        #    y_column = 'rmre' if log_return == False else 'log_return'
-        #    fig = px.line(result.reset_index(),
-        #                  x='Month' if frequency == 12 else 'Quarter' if frequency == 4 else 'Semester',
-        #                  y=y_column,
-        #                  title='Mean Log Return' if type == 'mean' else 'Last Log Return')
-        #    fig.update_layout(autosize=True)
-        #    fig.show()
-
         if plot_data:
             if log_return:
                 title_plot = 'Mean Log Return' if type == 'mean' else 'Last Log Return'
@@ -231,6 +222,18 @@ def ipc_data():
     return x
 
 def ibr_data(periodicity = "overnight"):
+    """ibr_data _summary_
+
+    Parameters
+    ----------
+    periodicity : str, optional
+        _description_, by default "overnight"
+
+    Returns
+    -------
+    _type_
+        _description_
+    """
 
     links = {
         "overnight": "https://totoro.banrep.gov.co/analytics/saw.dll?Download&Format=excel2007&Extension=.xls&BypassCache=true&lang=es&path=%2Fshared%2FSeries%20Estad%C3%ADsticas_T%2F1.%20IBR%2F%201.1.IBR_Plazo%20overnight%20nominal%20para%20un%20rango%20de%20fechas%20dado%20IQY&NQUser=publico&NQPassword=publico123&SyncOperation=1",
