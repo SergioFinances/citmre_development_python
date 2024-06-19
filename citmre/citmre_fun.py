@@ -199,9 +199,8 @@ def interventionrate_data():
         x = x.iloc[8:-4]
         x.columns = ["date", "interventionrate"]
         x["date"] = pd.to_datetime(x["date"])
-        x["interventionrate"] = pd.to_numeric(x["interventionrate"], errors='coerce')
+        x["interventionrate"] = pd.to_numeric(x["interventionrate"], errors='coerce') / 100
         x = x.sort_values(by="date")
-        x["interventionrate"] = x["interventionrate"] / 100
         x = x.reset_index(drop=True)
         return x
 
@@ -219,7 +218,7 @@ def ipc_data():
     if response.status_code == 200:
         with BytesIO(response.content) as f:
             x = pd.read_excel(f, sheet_name=0)
-            x = x.iloc[12:-10]
+        x = x.iloc[12:-10]
         x.columns = ["date", "index", "annual_inflation", "monthly_inflation", "Inflation_by_year"]
         x["date"] = pd.to_datetime(x["date"].astype(str).str[:4] + x["date"].astype(str).str[4:] + '01', format='%Y%m%d')
         x["date"] = x["date"].dt.strftime('%Y-%m')
@@ -231,8 +230,18 @@ def ipc_data():
         x = x.reset_index(drop=True)
     return x
 
-def ibr_data():
-    link = "https://totoro.banrep.gov.co/analytics/saw.dll?Download&Format=excel2007&Extension=.xls&BypassCache=true&lang=es&path=%2Fshared%2FSeries%20Estad%C3%ADsticas_T%2F1.%20IBR%2F%201.1.IBR_Plazo%20overnight%20nominal%20para%20un%20rango%20de%20fechas%20dado%20IQY&NQUser=publico&NQPassword=publico123&SyncOperation=1"
+def ibr_data(periodicity = "overnight"):
+
+    links = {
+        "overnight": "https://totoro.banrep.gov.co/analytics/saw.dll?Download&Format=excel2007&Extension=.xls&BypassCache=true&lang=es&path=%2Fshared%2FSeries%20Estad%C3%ADsticas_T%2F1.%20IBR%2F%201.1.IBR_Plazo%20overnight%20nominal%20para%20un%20rango%20de%20fechas%20dado%20IQY&NQUser=publico&NQPassword=publico123&SyncOperation=1",
+        "monthly": "https://totoro.banrep.gov.co/analytics/saw.dll?Download&Format=excel2007&Extension=.xls&BypassCache=true&lang=es&path=%2Fshared%2FSeries%20Estad%C3%ADsticas_T%2F1.%20IBR%2F%201.2.IBR_Plazo%20un%20mes%20nominal%20para%20un%20rango%20de%20fechas%20dado%20IQY&NQUser=publico&NQPassword=publico123&SyncOperation=1",
+        "quartely": "https://totoro.banrep.gov.co/analytics/saw.dll?Download&Format=excel2007&Extension=.xls&BypassCache=true&lang=es&path=%2Fshared%2FSeries%20Estad%C3%ADsticas_T%2F1.%20IBR%2F%201.3.IBR_Plazo%20tres%20meses%20nominal%20para%20un%20rango%20de%20fechas%20dado%20IQY&NQUser=publico&NQPassword=publico123&SyncOperation=1",
+        "biannual": "https://totoro.banrep.gov.co/analytics/saw.dll?Download&Format=excel2007&Extension=.xls&BypassCache=true&lang=es&path=%2Fshared%2FSeries%20Estad%C3%ADsticas_T%2F1.%20IBR%2F1.5.IBR_Plazo%20seis%20meses%20nominal%20para%20un%20rango%20de%20fechas%20dado%20IQY&NQUser=publico&NQPassword=publico123&SyncOperation=1",
+        "annual": "https://totoro.banrep.gov.co/analytics/saw.dll?Download&Format=excel2007&Extension=.xls&BypassCache=true&lang=es&Path=%2fshared%2fSeries%20Estad%c3%adsticas_T%2f1.%20IBR%2f1.6.IBR_Plazo%20doce%20meses%20nominal%20para%20un%20rango%20de%20fechas%20dado%20IQY&NQUser=publico&NQPassword=publico123&SyncOperation=1"
+    }
+
+    link = links.get(periodicity)
+
     headers = {
         "Host": "totoro.banrep.gov.co",
         "User-Agent": "GoogleBot/2.1 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
@@ -245,9 +254,16 @@ def ibr_data():
     if response.status_code == 200:
         with BytesIO(response.content) as f:
             x = pd.read_excel(f, sheet_name=0)
+    x = x.iloc[8:-7, [0, 3, 4]]
+    x.columns = ["date", "EAIBR", "NOMIBR"]
+    x["date"] = pd.to_datetime(x["date"])
+    x["EAIBR"] = x['EAIBR'].str.replace(',', '.').astype(float) / 100
+    x["NOMIBR"] = x['NOMIBR'].str.replace(',', '.').astype(float) / 100
+    x = x.sort_values(by="date")
+    x = x.reset_index(drop=True)
     return x
 
-x = ibr_data()
+x = ibr_data("biannual")
 
 # Crear la ventana principal
 root = tk.Tk()
