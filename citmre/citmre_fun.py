@@ -176,14 +176,11 @@ def rmre_data(start_date=None, end_date=None, log_return=False, plot_data=False,
         raise ValueError("Error: Invalid 'frequency' argument. Should be one of 365 12, 4, or 2")
     
 
-
 import tkinter as tk
 from tkinter import scrolledtext
 
 pd.set_option('display.max_rows', None)  # Mostrar todas las filas
 pd.set_option('display.max_columns', None)  # Mostrar todas las columnas
-
-
 
 def interventionrate_data():
     link = "https://totoro.banrep.gov.co/analytics/saw.dll?Download&Format=excel2007&Extension=.xlsx&BypassCache=true&path=%2Fshared%2fSeries%20Estad%c3%adsticas_T%2F1.%20Tasa%20de%20intervenci%C3%B3n%20de%20pol%C3%ADtica%20monetaria%2F1.2.TIP_Serie%20hist%C3%B3rica%20diaria%20IQY&lang=es&NQUser=publico&NQPassword=publico123&SyncOperation=1"
@@ -207,7 +204,6 @@ def interventionrate_data():
         x["interventionrate"] = x["interventionrate"] / 100
         x = x.reset_index(drop=True)
         return x
-
 
 def ipc_data():
     link = "https://totoro.banrep.gov.co/analytics/saw.dll?Download&Format=excel2007&Extension=.xls&BypassCache=true&lang=es&path=%2Fshared%2FSeries%20Estad%C3%ADsticas_T%2F1.%20IPC%20base%202018%2F1.2.%20Por%20a%C3%B1o%2F1.2.5.IPC_Serie_variaciones_IQY&NQUser=publico&NQPassword=publico123&SyncOperation=1"
@@ -235,8 +231,23 @@ def ipc_data():
         x = x.reset_index(drop=True)
     return x
 
+def ibr_data():
+    link = "https://totoro.banrep.gov.co/analytics/saw.dll?Download&Format=excel2007&Extension=.xls&BypassCache=true&lang=es&path=%2Fshared%2FSeries%20Estad%C3%ADsticas_T%2F1.%20IBR%2F%201.1.IBR_Plazo%20overnight%20nominal%20para%20un%20rango%20de%20fechas%20dado%20IQY&NQUser=publico&NQPassword=publico123&SyncOperation=1"
+    headers = {
+        "Host": "totoro.banrep.gov.co",
+        "User-Agent": "GoogleBot/2.1 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        "Accept-Language": "es-ES,es;q=0.8,en-US;q=0.5,en;q=0.3",
+        "Accept-Encoding": "gzip, deflate",
+        "Connection": "keep-alive"
+    }
+    response = requests.get(link, headers=headers)
+    if response.status_code == 200:
+        with BytesIO(response.content) as f:
+            x = pd.read_excel(f, sheet_name=0)
+    return x
 
-x = ipc_data()
+x = ibr_data()
 
 # Crear la ventana principal
 root = tk.Tk()
